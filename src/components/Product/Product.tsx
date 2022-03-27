@@ -60,7 +60,7 @@ export const Product: React.FC = () => {
             {`Weight: ${product.weight}\n`}
           </p>
           <div className="Product__comments">
-            <p>Comments:</p>
+            <h4 className="Product__comments-title">Comments:</h4>
             <ul>
               {comments.map(comment => (
                 <li key={comment.id}>
