@@ -11,7 +11,7 @@ export const App: React.FC = () => {
         <div className="App__content-container">
           <Routes>
             <Route path="/" element={<GoodsList />} />
-            <Route path="product" element={<Product />} />
+            <Route path="/:id" element={<Product />} />
           </Routes>
         </div>
       </div>

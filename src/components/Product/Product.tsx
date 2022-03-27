@@ -1,12 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import { getProduct } from '../../api/Goods';
+import { loadProductAction } from '../../store/actions';
 import { getProductSelector } from '../../store/selectors';
 import { EditProductForm } from '../EditProductForm/EditProductForm';
 import './Product.scss';
 
 export const Product: React.FC = () => {
   const product = useSelector(getProductSelector);
+  const dispatch = useDispatch();
+  const params = useParams();
+
+  const loadProduct = async () => {
+    if (params.id) {
+      const productFromServer = await getProduct(+params.id);
+
+      dispatch(loadProductAction(productFromServer));
+    }
+  };
+
+  useEffect(() => {
+    if (!product) {
+      loadProduct();
+    }
+  }, []);
 
   return (
     <>

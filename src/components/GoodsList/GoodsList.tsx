@@ -82,7 +82,7 @@ export const GoodsList:React.FC = () => {
                 </span>
                 <div className="GoodsList__buttons buttons">
                   <Link
-                    to="product"
+                    to={`${product.id}`}
                     type="button"
                     className="GoodsList__user-button button"
                     onClick={() => loadProduct(product.id)}
