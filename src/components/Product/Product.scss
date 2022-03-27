@@ -27,4 +27,16 @@
     width: 96px;
     margin-right: 10px;
   }
+
+  &__comments {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  &__comment-delete {
+    width: 30px;
+    height: 20px;
+  }
 }

@@ -58,20 +58,69 @@
         "height": "2"
       },
       "weight": "2",
-      "comments": [
-        {
-          "id": 1,
-          "productId": 5,
-          "description": "Comment model",
-          "date": "date"
-        },
-        {
-          "id": 2,
-          "productId": 5,
-          "description": "Comment model",
-          "date": "date"
-        }
-      ]
+      "comments": []
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "productId": 1,
+      "description": "Comment model",
+      "date": "date"
+    },
+    {
+      "id": 2,
+      "productId": 1,
+      "description": "Comment model",
+      "date": "date"
+    },
+    {
+      "id": 3,
+      "productId": 2,
+      "description": "Comment model",
+      "date": "date"
+    },
+    {
+      "id": 4,
+      "productId": 2,
+      "description": "Comment model",
+      "date": "date"
+    },
+    {
+      "id": 5,
+      "productId": 3,
+      "description": "Comment model",
+      "date": "date"
+    },
+    {
+      "id": 6,
+      "productId": 3,
+      "description": "Comment model",
+      "date": "date"
+    },
+    {
+      "id": 7,
+      "productId": 4,
+      "description": "Comment model",
+      "date": "date"
+    },
+    {
+      "id": 8,
+      "productId": 4,
+      "description": "Comment model",
+      "date": "date"
+    },
+    {
+      "id": 9,
+      "productId": 5,
+      "description": "Comment model",
+      "date": "date"
+    },
+    {
+      "id": 10,
+      "productId": 5,
+      "description": "Comment model",
+      "date": "date"
     }
   ]
 }
