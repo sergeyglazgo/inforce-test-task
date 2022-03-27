@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { postGood } from '../api/Goods';
+import { useDispatch } from 'react-redux';
+import { getSortedGoods, postProduct } from '../../api/Goods';
+import { loadGoodsAction } from '../../store/actions';
 
 interface Props {
-  goodId: number,
+  productId: number,
 }
 
-export const AddGoodForm:React.FC<Props> = ({ goodId }) => {
+export const AddProductForm:React.FC<Props> = ({ productId }) => {
+  const dispatch = useDispatch();
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [inputValues, setInputValues] = useState({
     imageUrl: '',
@@ -26,19 +29,13 @@ export const AddGoodForm:React.FC<Props> = ({ goodId }) => {
     });
   };
 
-  const handleAddGood = async () => {
-    await postGood(
-      goodId,
-      inputValues.imageUrl,
-      inputValues.name,
-      +inputValues.count,
-      +inputValues.width,
-      +inputValues.height,
-      inputValues.weight,
-    );
+  const loadGoods = async () => {
+    const goodsFromServer: Product[] = await getSortedGoods();
+
+    dispatch(loadGoodsAction(goodsFromServer));
   };
 
-  const handleCancel = () => {
+  const clearInput = () => {
     setInputValues({
       imageUrl: '',
       name: '',
@@ -47,6 +44,26 @@ export const AddGoodForm:React.FC<Props> = ({ goodId }) => {
       height: '',
       weight: '',
     });
+  };
+
+  const handleAddProduct = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    await postProduct(
+      productId,
+      inputValues.imageUrl,
+      inputValues.name,
+      inputValues.count,
+      inputValues.width,
+      inputValues.height,
+      inputValues.weight,
+    );
+    loadGoods();
+    setIsFormVisible(false);
+    clearInput();
+  };
+
+  const handleCancel = () => {
+    clearInput();
     setIsFormVisible(false);
   };
 
@@ -57,11 +74,11 @@ export const AddGoodForm:React.FC<Props> = ({ goodId }) => {
         className="button"
         onClick={() => setIsFormVisible(true)}
       >
-        Add
+        Add product
       </button>
 
       {isFormVisible && (
-        <form onSubmit={handleAddGood}>
+        <form onSubmit={handleAddProduct}>
           <div className="modal is-active">
             <div className="modal-background"></div>
             <div className="modal-card">

@@ -1,12 +1,12 @@
 export const LOAD_GOODS = 'LOAD GOODS';
-export const LOAD_GOOD = 'LOAD GOOD';
+export const LOAD_PRODUCT = 'LOAD GOOD';
 
-export const loadGoodsAction = (payload: Good[]) => ({
+export const loadGoodsAction = (payload: Product[]) => ({
   type: LOAD_GOODS,
   payload,
 });
 
-export const loadGoodAction = (payload: Good | null) => ({
-  type: LOAD_GOOD,
+export const loadProductAction = (payload: Product | null) => ({
+  type: LOAD_PRODUCT,
   payload,
 });

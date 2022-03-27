@@ -1,9 +1,9 @@
 import { AnyAction, createStore } from 'redux';
-import { LOAD_GOOD, LOAD_GOODS } from './actions';
+import { LOAD_PRODUCT, LOAD_GOODS } from './actions';
 
 const initialState: State = {
   goods: [],
-  good: null,
+  product: null,
 };
 
 const reducer = (state = initialState, action: AnyAction) => {
@@ -14,10 +14,10 @@ const reducer = (state = initialState, action: AnyAction) => {
         goods: action.payload,
       };
 
-    case LOAD_GOOD:
+    case LOAD_PRODUCT:
       return {
         ...state,
-        good: action.payload,
+        product: action.payload,
       };
 
     default:

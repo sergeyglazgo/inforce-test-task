@@ -1,21 +1,21 @@
 /// <reference types="react-scripts" />
 
 interface State {
-  goods: Good[],
-  good: Good | null,
+  goods: Product[],
+  product: Product | null,
 }
 
-interface Good {
+interface Product {
   id: number,
   imageUrl: string,
   name: string,
-  count: number,
+  count: string,
   size: {
-    width: number,
-    height: number,
+    width: string,
+    height: string,
   },
   weight: string,
-  comments: Comment[],
+  comments: Comment[] | null,
 }
 
 interface Comment {

@@ -2,62 +2,75 @@
   "goods": [
     {
       "id": 1,
-      "imageUrl": "some url here",
-      "name": "Product name1",
-      "count": 4,
+      "imageUrl": "https://via.placeholder.com/400x400",
+      "name": "aProduct name1",
+      "count": "5",
       "size": {
         "width": 200,
         "height": 200
       },
       "weight": "200g",
-      "comments": [
-        "CommentModel",
-        "CommentModel"
-      ]
+      "comments": []
     },
     {
       "id": 2,
-      "imageUrl": "some url here",
+      "imageUrl": "https://via.placeholder.com/400x400",
       "name": "Product name2",
-      "count": 4,
+      "count": 44,
       "size": {
         "width": 200,
         "height": 200
       },
       "weight": "200g",
-      "comments": [
-        "CommentModel",
-        "CommentModel"
-      ]
+      "comments": []
     },
     {
       "id": 3,
-      "imageUrl": "some url here",
+      "imageUrl": "https://via.placeholder.com/400x400",
       "name": "Product name3",
-      "count": 4,
+      "count": 3,
       "size": {
         "width": 200,
         "height": 200
       },
       "weight": "200g",
-      "comments": [
-        "CommentModel",
-        "CommentModel"
-      ]
+      "comments": []
     },
     {
       "id": 4,
-      "imageUrl": "some url here",
-      "name": "Product name4",
-      "count": 4,
+      "imageUrl": "https://via.placeholder.com/400x400",
+      "name": "aProduct name4",
+      "count": "12",
       "size": {
-        "width": 200,
-        "height": 200
+        "width": "2",
+        "height": "22"
       },
-      "weight": "200g",
+      "weight": "2",
+      "comments": []
+    },
+    {
+      "id": 5,
+      "imageUrl": "https://via.placeholder.com/400x400",
+      "name": "Product name5",
+      "count": "1",
+      "size": {
+        "width": "2",
+        "height": "2"
+      },
+      "weight": "2",
       "comments": [
-        "CommentModel",
-        "CommentModel"
+        {
+          "id": 1,
+          "productId": 5,
+          "description": "Comment model",
+          "date": "date"
+        },
+        {
+          "id": 2,
+          "productId": 5,
+          "description": "Comment model",
+          "date": "date"
+        }
       ]
     }
   ]
