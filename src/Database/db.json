@@ -4,12 +4,12 @@
       "id": 1,
       "imageUrl": "https://via.placeholder.com/400x400",
       "name": "aProduct name1",
-      "count": "5",
+      "count": 5,
       "size": {
         "width": 200,
         "height": 200
       },
-      "weight": "200g",
+      "weight": 200,
       "comments": []
     },
     {
@@ -21,7 +21,7 @@
         "width": 200,
         "height": 200
       },
-      "weight": "200g",
+      "weight": 200,
       "comments": []
     },
     {
@@ -33,31 +33,31 @@
         "width": 200,
         "height": 200
       },
-      "weight": "200g",
+      "weight": 200,
       "comments": []
     },
     {
       "id": 4,
       "imageUrl": "https://via.placeholder.com/400x400",
       "name": "aProduct name4",
-      "count": "12",
+      "count": 12,
       "size": {
-        "width": "2",
-        "height": "22"
+        "width": 2,
+        "height": 22
       },
-      "weight": "2",
+      "weight": 2,
       "comments": []
     },
     {
       "id": 5,
       "imageUrl": "https://via.placeholder.com/400x400",
       "name": "Product name5",
-      "count": "1",
+      "count": 1,
       "size": {
-        "width": "2",
-        "height": "2"
+        "width": 2,
+        "height": 2
       },
-      "weight": "2",
+      "weight": 2,
       "comments": []
     }
   ],
@@ -121,6 +121,27 @@
       "productId": 5,
       "description": "Comment model",
       "date": "date"
+    },
+    {
+      "id": 11,
+      "productId": 6,
+      "description": "ewerwer",
+      "date": "Mon Mar 28 2022 15:05:58 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": 12,
+      "productId": 6,
+      "description": "ewerwerer",
+      "date": "Mon Mar 28 2022 15:06:01 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "comment": {
+        "id": 11,
+        "productId": 5,
+        "description": "dfsdf",
+        "date": "Mon Mar 28 2022 15:34:31 GMT+0300 (Eastern European Summer Time)"
+      },
+      "id": 13
     }
   ]
 }

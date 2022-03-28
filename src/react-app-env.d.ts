@@ -15,10 +15,10 @@ interface Product {
     height: string,
   },
   weight: string,
-  comments: Comment[] | null,
+  comments: CommentItem[] | null,
 }
 
-interface Comment {
+interface CommentItem {
   id: number,
   productId: number,
   description: string,

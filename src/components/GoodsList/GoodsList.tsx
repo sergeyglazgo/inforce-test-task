@@ -130,7 +130,7 @@ export const GoodsList:React.FC = () => {
         </div>
       )}
 
-      <AddProductForm productId={+goods[goods.length]} />
+      <AddProductForm />
     </div>
   );
 };

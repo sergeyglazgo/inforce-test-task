@@ -3,11 +3,7 @@ import { useDispatch } from 'react-redux';
 import { getSortedGoods, postProduct } from '../../api/Goods';
 import { loadGoodsAction } from '../../store/actions';
 
-interface Props {
-  productId: number,
-}
-
-export const AddProductForm:React.FC<Props> = ({ productId }) => {
+export const AddProductForm:React.FC = () => {
   const dispatch = useDispatch();
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [inputValues, setInputValues] = useState({
@@ -48,15 +44,19 @@ export const AddProductForm:React.FC<Props> = ({ productId }) => {
 
   const handleAddProduct = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await postProduct(
-      productId,
-      inputValues.imageUrl,
-      inputValues.name,
-      inputValues.count,
-      inputValues.width,
-      inputValues.height,
-      inputValues.weight,
-    );
+    const product = {
+      imageUrl: inputValues.imageUrl,
+      name: inputValues.name,
+      count: inputValues.count,
+      size: {
+        width: inputValues.width,
+        height: inputValues.height,
+      },
+      weight: inputValues.weight,
+      comments: [],
+    };
+
+    await postProduct(product);
     loadGoods();
     setIsFormVisible(false);
     clearInput();
@@ -71,7 +71,7 @@ export const AddProductForm:React.FC<Props> = ({ productId }) => {
     <div>
       <button
         type="button"
-        className="button"
+        className="button is-success"
         onClick={() => setIsFormVisible(true)}
       >
         Add product

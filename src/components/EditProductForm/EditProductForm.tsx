@@ -37,16 +37,22 @@ export const EditProductForm: React.FC = () => {
 
   const handleEditProduct = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (product) {
-      await editProduct(
-        product.id,
-        inputValues.imageUrl,
-        inputValues.name,
-        inputValues.count,
-        inputValues.width,
-        inputValues.height,
-        inputValues.weight,
-      );
+      const editedProduct = {
+        id: product?.id,
+        imageUrl: inputValues.imageUrl,
+        name: inputValues.name,
+        count: inputValues.count,
+        size: {
+          width: inputValues.width,
+          height: inputValues.height,
+        },
+        weight: inputValues.weight,
+        comments: [],
+      };
+
+      await editProduct(editedProduct);
       loadProduct();
     }
 

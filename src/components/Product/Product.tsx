@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { deleteComment, getComments } from '../../api/Comments';
+import { deleteComment, getComments, postComment } from '../../api/Comments';
 import { getProduct } from '../../api/Goods';
 import { loadProductAction } from '../../store/actions';
 import { getProductSelector } from '../../store/selectors';
@@ -12,7 +12,8 @@ export const Product: React.FC = () => {
   const product = useSelector(getProductSelector);
   const dispatch = useDispatch();
   const params = useParams();
-  const [comments, setComments] = useState<Comment[]>([]);
+  const [comments, setComments] = useState<CommentItem[]>([]);
+  const [newComment, setNewComment] = useState('');
 
   const loadProduct = async () => {
     if (params.id) {
@@ -33,6 +34,20 @@ export const Product: React.FC = () => {
   const handleDelete = async (commentId: number) => {
     deleteComment(commentId);
     setComments(comments.filter(comment => comment.id !== commentId));
+  };
+
+  const handlePostComment = async () => {
+    if (params.id) {
+      const comment = {
+        productId: +params.id,
+        description: newComment,
+        date: Date(),
+      };
+
+      await postComment(comment);
+    }
+
+    loadComments();
   };
 
   useEffect(() => {
@@ -68,7 +83,7 @@ export const Product: React.FC = () => {
                   &nbsp;
                   <button
                     type="button"
-                    className="Product__comment-delete button"
+                    className="Product__comment-delete button is-light"
                     onClick={() => handleDelete(comment.id)}
                   >
                     X
@@ -76,6 +91,13 @@ export const Product: React.FC = () => {
                 </li>
               ))}
             </ul>
+            <textarea
+              className="textarea"
+              placeholder="Your comment"
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+            >
+            </textarea>
           </div>
           <div className="Product__buttons">
             <Link
@@ -85,6 +107,13 @@ export const Product: React.FC = () => {
             >
               Back
             </Link>
+            <button
+              type="button"
+              className="Product__button button is-success"
+              onClick={handlePostComment}
+            >
+              Comment
+            </button>
             <EditProductForm />
           </div>
         </div>
