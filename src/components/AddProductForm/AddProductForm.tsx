@@ -16,13 +16,19 @@ export const AddProductForm:React.FC = () => {
   });
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputName = event.target.name;
-    const inputValue = event.target.value;
+    const { name, value } = event.currentTarget;
 
-    setInputValues({
-      ...inputValues,
-      [inputName]: inputValue,
-    });
+    if (name !== 'name' && name !== 'imageUrl') {
+      setInputValues({
+        ...inputValues,
+        [name]: value.replace(/[a-z]/gi, '').trim(),
+      });
+    } else {
+      setInputValues({
+        ...inputValues,
+        [name]: value.trimLeft(),
+      });
+    }
   };
 
   const loadGoods = async () => {

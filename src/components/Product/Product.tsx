@@ -37,7 +37,7 @@ export const Product: React.FC = () => {
   };
 
   const handlePostComment = async () => {
-    if (params.id) {
+    if (params.id && newComment.trim()) {
       const comment = {
         productId: +params.id,
         description: newComment,
@@ -45,9 +45,9 @@ export const Product: React.FC = () => {
       };
 
       await postComment(comment);
+      setNewComment('');
+      loadComments();
     }
-
-    loadComments();
   };
 
   useEffect(() => {
@@ -69,14 +69,15 @@ export const Product: React.FC = () => {
           />
           <h3 className="Product__name">{product.name}</h3>
           <p className="Product__info">
-            {`Count: ${product.count}\n`}
+            {`Quantity: ${product.count}\n`}
             {`Width: ${product.size.width}\n`}
             {`Height: ${product.size.height}\n`}
             {`Weight: ${product.weight}\n`}
           </p>
           <div className="Product__comments">
+            <span>---</span>
             <h4 className="Product__comments-title">Comments:</h4>
-            <ul>
+            <ul className="Product__comments-list">
               {comments.map(comment => (
                 <li key={comment.id}>
                   {comment.description}

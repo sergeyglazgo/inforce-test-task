@@ -77,7 +77,7 @@ export const GoodsList:React.FC = () => {
                 <img src={product.imageUrl} alt="placeholder" />
                 <h3 className="GoodsList__product-title">{product.name}</h3>
                 <span className="GoodsList__product-count">
-                  Count:&nbsp;
+                  Quantity:&nbsp;
                   {product.count}
                 </span>
                 <div className="GoodsList__buttons buttons">

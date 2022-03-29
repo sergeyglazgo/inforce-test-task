@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editProduct, getProduct } from '../../api/Goods';
@@ -26,13 +28,19 @@ export const EditProductForm: React.FC = () => {
   };
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputName = event.target.name;
-    const inputValue = event.target.value;
+    const { name, value } = event.currentTarget;
 
-    setInputValues({
-      ...inputValues,
-      [inputName]: inputValue,
-    });
+    if (name !== 'name' && name !== 'imageUrl') {
+      setInputValues({
+        ...inputValues,
+        [name]: value.replace(/[a-z]/gi, '').trim(),
+      });
+    } else {
+      setInputValues({
+        ...inputValues,
+        [name]: value.trimLeft(),
+      });
+    }
   };
 
   const handleEditProduct = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -91,7 +99,8 @@ export const EditProductForm: React.FC = () => {
               </header>
               <section className="modal-card-body">
                 <div className="field">
-                  <div className="control">
+                  <label className="label">
+                    Image
                     <input
                       className="input"
                       type="text"
@@ -101,10 +110,11 @@ export const EditProductForm: React.FC = () => {
                       onChange={handleInput}
                       required
                     />
-                  </div>
+                  </label>
                 </div>
                 <div className="field">
-                  <div className="control">
+                  <label className="label">
+                    Title
                     <input
                       className="input"
                       type="text"
@@ -114,10 +124,11 @@ export const EditProductForm: React.FC = () => {
                       onChange={handleInput}
                       required
                     />
-                  </div>
+                  </label>
                 </div>
                 <div className="field">
-                  <div className="control">
+                  <label className="label">
+                    Quantity
                     <input
                       className="input"
                       type="text"
@@ -127,10 +138,11 @@ export const EditProductForm: React.FC = () => {
                       onChange={handleInput}
                       required
                     />
-                  </div>
+                  </label>
                 </div>
                 <div className="field">
-                  <div className="control">
+                  <label className="label">
+                    Width
                     <input
                       className="input"
                       type="text"
@@ -140,10 +152,11 @@ export const EditProductForm: React.FC = () => {
                       onChange={handleInput}
                       required
                     />
-                  </div>
+                  </label>
                 </div>
                 <div className="field">
-                  <div className="control">
+                  <label className="label">
+                    Height
                     <input
                       className="input"
                       type="text"
@@ -153,10 +166,11 @@ export const EditProductForm: React.FC = () => {
                       onChange={handleInput}
                       required
                     />
-                  </div>
+                  </label>
                 </div>
                 <div className="field">
-                  <div className="control">
+                  <label className="label">
+                    Weight
                     <input
                       className="input"
                       type="text"
@@ -166,7 +180,7 @@ export const EditProductForm: React.FC = () => {
                       onChange={handleInput}
                       required
                     />
-                  </div>
+                  </label>
                 </div>
               </section>
               <footer className="modal-card-foot">
